@@ -1,0 +1,19 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'kotlin-spring'
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+    compile project(':business-rules')
+    compile("org.springframework.boot:spring-boot-starter-data-redis:$springBootVersion")
+}
