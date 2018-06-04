@@ -28,7 +28,8 @@ class ModulesTest : Spek({
             modules.teachModule(teacher, module)
             modules.findAllModules().also {
                 it.size shouldEqual 1
-                it[0].teachers shouldEqual teacher
+                it[0].teachers.size shouldEqual 1
+                it[0].teachers[0] shouldEqual teacher   
             }
         }
     }
