@@ -1,4 +1,4 @@
 rootProject.name = 'students-results'
 
-include 'business-rules', 'main', 'persistence'
+include 'interactors', 'main', 'persistence'
 

@@ -35,7 +35,9 @@ subprojects {
     dependencies {
         compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
         compile("org.jetbrains.kotlin:kotlin-reflect")
-        testCompile('org.jetbrains.spek:spek-api:1.1.5') {
+        compile group: 'io.arrow-kt', name: 'arrow-core', version: '0.7.2'
+        testCompile('org.jetbrains.spek:spek-api:1.1.5')
+        {
             exclude group: 'org.jetbrains.kotlin'
         }
         testRuntime('org.jetbrains.spek:spek-junit-platform-engine:1.1.5') {
