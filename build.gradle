@@ -42,6 +42,8 @@ subprojects {
             exclude group: 'org.junit.platform'
             exclude group: 'org.jetbrains.kotlin'
         }
+        testCompile group: 'org.amshove.kluent', name: 'kluent', version: '1.38'
+        testCompile group: 'io.mockk', name: 'mockk', version: '1.8'
     }
 
     compileKotlin {
