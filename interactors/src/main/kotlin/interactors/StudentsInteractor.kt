@@ -14,7 +14,7 @@ class StudentsInteractor(private val studentsRepository: StudentsRepository, pri
             studentsRepository.findStudentById(studentId = 1).flatMap { student ->
                 examsRepository.findExamById(examId = notateExam.examId).flatMap { exam ->
                     student.notate(exam, notateExam.note).flatMap { updatedStudent ->
-                        studentsRepository.save(student)
+                        studentsRepository.save(updatedStudent)
                     }
                 }
             }.mapLeft { NotateExamException(throwable = it) }
