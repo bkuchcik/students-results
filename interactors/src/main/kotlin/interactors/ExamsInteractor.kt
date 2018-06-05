@@ -7,11 +7,11 @@ import services.Exams
 import services.NotateExamException
 
 class ExamsInteractor(private val examsRepository: ExamsRepository) : Exams {
-    override fun notate(notation: NotateExam): Either<NotateExamException, Unit> =
-        examsRepository.findExamById(notation.examId).bimap({
-           NotateExamException(throwable = it)
-        }, {
-            Unit
-        })
-
+    override fun notate(notation: NotateExam): Either<RuntimeException, Unit> =
+            examsRepository.findExamById(notation.examId).bimap({
+                NotateExamException(throwable = it)
+            }, {
+                println("$it")
+                Unit
+            })
 }
