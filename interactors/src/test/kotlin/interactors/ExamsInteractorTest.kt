@@ -3,6 +3,7 @@ package com.students.results.interactors
 import arrow.core.Either
 import com.students.results.entities.Exam
 import com.students.results.repository.ExamsRepository
+import com.students.results.services.Students
 import com.students.results.services.requests.NotateExam
 import io.mockk.every
 import io.mockk.mockk
@@ -16,6 +17,8 @@ class ExamsInteractorTest : Spek({
 
     val examsRepository = mockk<ExamsRepository>().apply {
         every { findExamById(any()) } returns Either.right(Exam(5L))
+    }
+    val students = mockk<Students>().apply {
     }
 
     given("an exam interactor") {

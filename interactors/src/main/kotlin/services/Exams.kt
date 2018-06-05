@@ -1,4 +1,4 @@
-package services
+package com.students.results.services
 
 import arrow.core.Either
 import com.students.results.services.requests.NotateExam
