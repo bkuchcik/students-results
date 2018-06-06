@@ -1,7 +1,6 @@
 package com.students.results.entities
 
 import arrow.core.Either
-import arrow.core.right
 import java.math.BigDecimal
 
 typealias Notes = Map<Exam, BigDecimal>

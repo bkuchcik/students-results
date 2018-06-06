@@ -2,7 +2,6 @@ package entities
 
 import com.students.results.entities.Exam
 import com.students.results.entities.Student
-import org.amshove.kluent.`should be instance of`
 import org.amshove.kluent.shouldBe
 import org.amshove.kluent.shouldEqual
 import org.jetbrains.spek.api.Spek

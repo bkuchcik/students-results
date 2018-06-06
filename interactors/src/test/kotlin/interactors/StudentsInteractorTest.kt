@@ -1,10 +1,10 @@
 package com.students.results.interactors
 
 import arrow.core.Either
-import arrow.core.flatMap
 import com.students.results.entities.Exam
 import com.students.results.entities.Student
 import com.students.results.repository.ExamsRepository
+import com.students.results.repository.StudentsRepository
 import com.students.results.services.requests.NotateExam
 import io.mockk.every
 import io.mockk.mockk
@@ -16,7 +16,6 @@ import org.amshove.kluent.shouldEqual
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
-import repository.StudentsRepository
 
 
 class StudentsInteractorTest : Spek({
