@@ -1,10 +1,10 @@
 package com.students.results.services
 
 import arrow.core.Either
-import com.students.results.services.requests.NotateExam
+import com.students.results.services.requests.GradeExam
 
 interface Students {
 
-    fun notate(notateExam: NotateExam): Either<NotateExamException, Unit>
+    fun grade(gradeExam: GradeExam): Either<GradeExamException, Unit>
 
 }

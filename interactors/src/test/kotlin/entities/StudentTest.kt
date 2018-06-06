@@ -14,10 +14,10 @@ class StudentTest : Spek({
         val student = Student(id = 40L)
         val exam = Exam(id = 50L)
 
-        it("getNot without note should returns NotEvaluatedException") {
+        it("getNot without grade should returns NotEvaluatedException") {
             student.getNotation(exam).isLeft() shouldBe true
         }
-        it("notate an exam with 20 and get notation should return 20") {
+        it("grade an exam with 20 and get notation should return 20") {
             student.notate(exam, "20".toBigDecimal()).apply {
                 isRight() shouldBe true
                 map {
@@ -28,7 +28,7 @@ class StudentTest : Spek({
                 }
             }
         }
-        it("notate less than zero should fail to register note") {
+        it("grade less than zero should fail to register grade") {
             student.notate(exam, "-1".toBigDecimal()).isLeft() shouldBe true
         }
     }

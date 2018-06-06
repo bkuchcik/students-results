@@ -5,12 +5,11 @@ import com.students.results.entities.Exam
 import com.students.results.entities.Student
 import com.students.results.repository.ExamsRepository
 import com.students.results.repository.StudentsRepository
-import com.students.results.services.requests.NotateExam
+import com.students.results.services.requests.GradeExam
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.slot
 import io.mockk.verify
-import org.amshove.kluent.`should be`
 import org.amshove.kluent.shouldBe
 import org.amshove.kluent.shouldEqual
 import org.jetbrains.spek.api.Spek
@@ -25,7 +24,7 @@ class StudentsInteractorTest : Spek({
 
         val studentSlot = slot<Student>()
         val studentRepository = mockk<StudentsRepository>() {
-            every { findStudentById(1) } returns Either.right(student)
+            every { findStudentById(3) } returns Either.right(student)
             every { save(student = capture(studentSlot)) } returns Either.right(Unit)
         }
         val exam = Exam(id = 5)
@@ -34,11 +33,8 @@ class StudentsInteractorTest : Spek({
         }
         val studentsInteractor = StudentsInteractor(studentRepository, examsRepository)
         studentsInteractor.notate20().apply {
-            it("should notate an existing exam with a note of 20") {
-                isRight() `should be` true
-            }
             it("should retrieve student by his id") {
-                verify { studentRepository.findStudentById(1) }
+                verify { studentRepository.findStudentById(3) }
             }
             it("should retrieve exam by id") {
                 verify { examsRepository.findExamById(5) }
@@ -53,8 +49,8 @@ class StudentsInteractorTest : Spek({
     }
 })
 
-private fun StudentsInteractor.notate20() = notate(NotateExam(
+private fun StudentsInteractor.notate20() = grade(GradeExam(
         examId = 5,
-        studentId = 1,
-        note = "20".toBigDecimal()
+        studentId = 3,
+        grade = "20".toBigDecimal()
 ))
