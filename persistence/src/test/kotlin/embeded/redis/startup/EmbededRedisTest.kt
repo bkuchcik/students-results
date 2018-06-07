@@ -17,8 +17,7 @@ import redis.embedded.RedisServer
 @ExtendWith(SpringExtension::class)
 @ContextConfiguration(classes = [RedisConfiguration::class, RedisEmbededConfiguration::class])
 @TestInstance(Lifecycle.PER_CLASS)
-class EmbededRedisTest {
-
+abstract class RedisTestConfiguration protected constructor() {
     @Autowired
     private lateinit var redisServer: RedisServer
 
@@ -27,13 +26,18 @@ class EmbededRedisTest {
         redisServer.start()
     }
 
-    @Test
-    fun runATEst(){
-        println("I am running")
-    }
-
     @AfterAll
     fun afterStart() {
         redisServer.stop()
     }
+}
+
+class EmbededRedisTest : RedisTestConfiguration() {
+
+
+    @Test
+    fun runATEst() {
+        println("I am running")
+    }
+
 }
